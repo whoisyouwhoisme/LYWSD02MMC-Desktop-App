@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>LYWSD02MMC.qml</file>
+        <file>fonts/5183.ttf</file>
+        <file>icons/battery.svg</file>
+        <file>icons/bluetooth.svg</file>
+        <file>icons/clock.svg</file>
+        <file>icons/humidity.svg</file>
+        <file>icons/thermometer.svg</file>
+        <file>Clock_Control.qml</file>
+        <file>fonts/Bahnschrift.ttf</file>
+        <file>Connection_Info.qml</file>
+        <file>Devices_List.qml</file>
+        <file>Connection_Confirmation.qml</file>
+        <file>Dialogs_Background.qml</file>
+        <file>Connecting_To_Device.qml</file>
+        <file>Time_Picker.qml</file>
+        <file>Writing_Service.qml</file>
+    </qresource>
+</RCC>
