@@ -16,8 +16,6 @@ Item {
 
     Rectangle {
         id: confirm_Body
-        x: 0
-        y: 0
         width: 250
         height: 150
         color: "#ffffff"
@@ -27,7 +25,6 @@ Item {
 
         Text {
             id: confirm_Label
-            x: 113
             text: qsTr("Confirm connection")
             anchors.top: parent.top
             font.pixelSize: 14
@@ -38,7 +35,6 @@ Item {
 
         Rectangle {
             id: confirm_Background
-            height: 81
             color: "#dedede"
             radius: 5
             anchors.left: parent.left
@@ -116,7 +112,6 @@ Item {
 
         Button {
             id: no_Connect
-            y: 111
             width: 90
             height: 30
             text: qsTr("No")
@@ -134,8 +129,6 @@ Item {
 
         Button {
             id: yes_Connect
-            x: 155
-            y: 111
             width: 90
             height: 30
             text: qsTr("Yes, Connect")

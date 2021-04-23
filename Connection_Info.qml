@@ -27,7 +27,6 @@ Item {
 
     Button {
         id: connection_Button
-        x: 100
         height: 25
         text: qsTr("Connect")
         anchors.top: connection_Status.bottom

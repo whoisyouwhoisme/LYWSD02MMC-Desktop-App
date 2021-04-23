@@ -18,7 +18,6 @@ Item {
 
         Button {
             id: sync_Clock
-            y: 15
             width: 80
             height: 40
             visible: false
@@ -54,7 +53,6 @@ Item {
 
         Button {
             id: set_Clock
-            y: 15
             width: 80
             height: 40
             enabled: device_Connected
@@ -72,8 +70,6 @@ Item {
 
         Switch {
             id: temperature_Switch
-            x: 217
-            y: 15
             width: 130
             height: 40
             enabled: device_Connected
@@ -96,12 +92,27 @@ Item {
 
     Connections {
         target: BLE_BRIDGE
+
         function onConnection_Completed() {
             device_Connected = true;
         }
 
         function onDevice_Disconnected() {
             device_Connected = false;
+            temperature_Switch.checked = false;
+        }
+    }
+
+    Connections {
+        target: CLOCK_INFO
+
+        function onTemperature_Unit_Changed(unit) {
+            if (unit === "celsius") {
+                temperature_Switch.checked = false;
+            }
+            else if (unit === "fahrenheit") {
+                temperature_Switch.checked = true;
+            }
         }
     }
 

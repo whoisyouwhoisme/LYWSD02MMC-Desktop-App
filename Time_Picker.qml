@@ -71,8 +71,6 @@ Item {
 
             Text {
                 id: minutes_Label
-                x: 92
-                y: 5
                 width: 80
                 height: 15
                 color: "#000000"
@@ -107,7 +105,6 @@ Item {
 
             Tumbler {
                 id: minutes_Tumbler
-                x: 92
                 width: 80
                 anchors.right: parent.right
                 anchors.top: minutes_Label.bottom

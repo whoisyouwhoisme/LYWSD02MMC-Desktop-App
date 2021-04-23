@@ -5,44 +5,39 @@ Item {
     height: 200
     Rectangle {
         id: clock_Case
-        x: 0
-        y: 0
         width: 360
         height: 200
         color: "#ffffff"
         radius: 25
-        border.width: 0
 
         Rectangle {
             id: display_Border
-            x: 10
-            y: 10
             width: 340
             height: 180
             color: "#f0f0f0"
             radius: 25
-            border.width: 0
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
 
             Rectangle {
                 id: display
-                x: 30
-                y: 30
                 width: 280
                 height: 120
                 color: "#dfdfdf"
-                radius: 0
-                border.width: 0
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 Text {
                     id: time_View
-                    x: 0
-                    y: 0
                     width: 280
                     height: 83
                     text: qsTr("--:--")
+                    anchors.top: parent.top
                     font.pixelSize: 100
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    anchors.topMargin: 0
+                    anchors.horizontalCenter: parent.horizontalCenter
                     fontSizeMode: Text.FixedSize
                     font.weight: Font.Normal
                     font.family: "Digital-7"
@@ -51,11 +46,10 @@ Item {
 
                 Item {
                     id: secondary_Info
-                    x: 0
-                    y: 89
                     width: 280
                     height: 24
                     anchors.bottom: parent.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottomMargin: 5
 
                     Item {
@@ -78,7 +72,6 @@ Item {
 
                         Text {
                             id: battery_Level
-                            y: 0
                             height: 24
                             text: qsTr("--")
                             anchors.left: battery_Icon.right
@@ -156,7 +149,6 @@ Item {
 
                         Image {
                             id: temp_Icon
-                            y: 2
                             width: 18
                             height: 18
                             anchors.verticalCenter: parent.verticalCenter
@@ -168,7 +160,6 @@ Item {
 
                         Text {
                             id: temp_Level
-                            y: 2
                             height: 22
                             text: "--.-"
                             anchors.left: temp_Icon.right
@@ -182,7 +173,6 @@ Item {
 
                         Text {
                             id: temp_Sign
-                            y: 2
                             height: 22
                             text: qsTr("°C")
                             anchors.left: temp_Level.right
@@ -238,6 +228,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:4}
+    D{i:0;formeditorZoom:1.75}
 }
 ##^##*/

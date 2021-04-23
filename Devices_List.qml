@@ -20,8 +20,6 @@ Item {
 
     Rectangle {
         id: list_Body
-        x: 0
-        y: 0
         width: 250
         height: 340
         color: "#ffffff"
