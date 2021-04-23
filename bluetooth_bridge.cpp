@@ -172,8 +172,12 @@ void bluetooth_Bridge::S_device_Connected() {
 
 
 void bluetooth_Bridge::disconnect_Device() {
-    _BLE_Controller->disconnectFromDevice();
-    _current_Device = nullptr;
+    if (_BLE_Controller) {
+        if (_BLE_Controller->state() != QLowEnergyController::UnconnectedState) {
+            _BLE_Controller->disconnectFromDevice();
+            _current_Device = nullptr;
+        }
+    }
 }
 
 
