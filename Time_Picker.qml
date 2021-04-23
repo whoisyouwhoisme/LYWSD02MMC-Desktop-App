@@ -86,6 +86,17 @@ Item {
                 minimumPixelSize: 12
             }
 
+            Component {
+                id: tumblers_Delegate
+
+                Label {
+                    text: format_Number(modelData)
+                    opacity: 1.0 - Math.abs(Tumbler.displacement) / (Tumbler.tumbler.visibleItemCount / 2)
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
+
             Tumbler {
                 id: hours_Tumbler
                 width: 80
@@ -97,11 +108,9 @@ Item {
                 anchors.bottomMargin: 5
                 anchors.leftMargin: 8
                 anchors.topMargin: 5
-                wheelEnabled: false
                 model: 24
+                delegate: tumblers_Delegate
             }
-
-
 
             Tumbler {
                 id: minutes_Tumbler
@@ -114,10 +123,9 @@ Item {
                 font.family: "Bahnschrift"
                 anchors.bottomMargin: 5
                 anchors.topMargin: 5
-                wheelEnabled: false
                 model: 60
+                delegate: tumblers_Delegate
             }
-
         }
 
         Button {
@@ -163,9 +171,32 @@ Item {
         }
     }
 
+    Connections {
+        target: CLOCK_INFO
+
+        function onTime_Changed() {
+            if (!root.visible) {
+                update_Tumblers()
+            }
+        }
+    }
+
+    function update_Tumblers() {
+        let time = CLOCK_INFO.get_Time
+        let time_Split = time.split(":")
+
+        hours_Tumbler.currentIndex = time_Split[0]
+        minutes_Tumbler.currentIndex = time_Split[1]
+    }
+
+    function format_Number(number) {
+        return number < 10 ? "0" + number : number.toString()
+    }
+
     function show_Dialog() {
         dialog_Background.show()
         root.visible = true
+        update_Tumblers()
     }
 
     function hide_Dialog() {
