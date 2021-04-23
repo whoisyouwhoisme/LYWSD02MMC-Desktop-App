@@ -1,6 +1,11 @@
 import QtQuick 2.12
 
 Item {
+    FontLoader {
+        id: digital7
+        source: "fonts/Digital-7.ttf"
+    }
+
     width: 360
     height: 200
     Rectangle {
@@ -40,7 +45,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     fontSizeMode: Text.FixedSize
                     font.weight: Font.Normal
-                    font.family: "Digital-7"
+                    font.family: digital7.name
                     renderType: Text.NativeRendering
                 }
 
@@ -79,7 +84,7 @@ Item {
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                             anchors.leftMargin: 2
-                            font.family: "Digital-7"
+                            font.family: digital7.name
                         }
 
                         Text {
@@ -122,7 +127,7 @@ Item {
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignBottom
                             anchors.leftMargin: 2
-                            font.family: "Digital-7"
+                            font.family: digital7.name
                             font.strikeout: false
                         }
 
@@ -168,7 +173,7 @@ Item {
                             verticalAlignment: Text.AlignBottom
                             anchors.leftMargin: 2
                             font.strikeout: false
-                            font.family: "Digital-7"
+                            font.family: digital7.name
                         }
 
                         Text {

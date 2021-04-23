@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>LYWSD02MMC.qml</file>
-        <file>fonts/5183.ttf</file>
         <file>icons/battery.svg</file>
         <file>icons/bluetooth.svg</file>
         <file>icons/clock.svg</file>
@@ -17,5 +16,6 @@
         <file>Connecting_To_Device.qml</file>
         <file>Time_Picker.qml</file>
         <file>Writing_Service.qml</file>
+        <file>fonts/Digital-7.ttf</file>
     </qresource>
 </RCC>
