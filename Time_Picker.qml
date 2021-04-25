@@ -142,10 +142,10 @@ Item {
             anchors.rightMargin: 15
 
             onClicked: {
-                var year_Timestamp = (new Date().getFullYear() - 1970) * 31536000;
-                var hours_Seconds = hours_Tumbler.currentIndex * 3600;
-                var minutes_Seconds = (minutes_Tumbler.currentIndex * 60) + 1;
-                var current_Timestamp = year_Timestamp + hours_Seconds + minutes_Seconds;
+                let year_Timestamp = (new Date().getFullYear() - 1970) * 31536000;
+                let hours_Seconds = hours_Tumbler.currentIndex * 3600;
+                let minutes_Seconds = (minutes_Tumbler.currentIndex * 60) + 1;
+                let current_Timestamp = year_Timestamp + hours_Seconds + minutes_Seconds;
 
                 hide_Dialog();
                 BLE_BRIDGE.set_New_Time(current_Timestamp, 0);

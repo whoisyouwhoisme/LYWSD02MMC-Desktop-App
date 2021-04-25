@@ -20,8 +20,7 @@ Item {
             id: sync_Clock
             width: 80
             height: 40
-            visible: false
-            enabled: false
+            enabled: device_Connected
             text: qsTr("Sync Clock")
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: set_Clock.right
@@ -30,24 +29,12 @@ Item {
             font.family: "Bahnschrift"
 
             onClicked: {
-                var date_Object = new Date();
-                var unix_TimeStamp = Math.round(date_Object.getTime() / 1000);
-                var timeZone = date_Object.getTimezoneOffset() / -60;
+                let date_Object = new Date();
+                let timeStamp = Math.round(date_Object.getTime() / 1000);
+                let timeZone = date_Object.getTimezoneOffset() * -60;
+                let shifted_TimeStamp = timeStamp + timeZone
 
-                console.log(timeZone)
-
-                var hex_Timezone = 0x00;
-
-                if (timeZone >= 0) {
-                    hex_Timezone = timeZone.toString(16);
-                }
-                else {
-                    hex_Timezone = 265 + timeZone;
-                }
-
-                console.log(hex_Timezone)
-
-                BLE_BRIDGE.set_New_Time(unix_TimeStamp, hex_Timezone);
+                BLE_BRIDGE.set_New_Time(shifted_TimeStamp, 0);
             }
         }
 
