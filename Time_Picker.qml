@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream:Time_Picker.qml
 import QtQuick 2.0
 import QtQuick.Controls 2.15
+=======
+import QtQuick
+import QtQuick.Controls
+import "Components/"
+>>>>>>> Stashed changes:QML/Time_Picker.qml
 
 Item {
     id: root

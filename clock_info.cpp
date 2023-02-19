@@ -64,7 +64,7 @@ void clock_Info::process_Time_Data(const QByteArray &data) {
         _timestamp = _timestamp + (_timestamp_Timezone - 256) * 3600;
     }
 
-    timestamp.setTime_t(_timestamp);
+    timestamp.setSecsSinceEpoch(_timestamp);
     QDateTime UTC(timestamp.toUTC());
     _current_Time = UTC.toString("hh:mm");
 

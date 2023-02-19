@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream:LYWSD02MMC.qml
 import QtQuick 2.12
+=======
+import QtQuick 2.15
+import Qt5Compat.GraphicalEffects
+>>>>>>> Stashed changes:QML/LYWSD02MMC.qml
 
 Item {
     FontLoader {

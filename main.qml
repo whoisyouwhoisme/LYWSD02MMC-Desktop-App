@@ -1,12 +1,18 @@
+<<<<<<< Updated upstream
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+=======
+import QtQuick
+import QtQuick.Controls
+import "QML/"
+>>>>>>> Stashed changes
 
 ApplicationWindow {
     id: window
     width: 410
     height: 400
     visible: true
-    title: qsTr("LYWSD02MMC")
+    title: "LYWSD02MMC"
     onClosing: {
         BLE_BRIDGE.disconnect_Device();
     }

@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream:Devices_List.qml
 import QtQuick 2.12
 import QtQuick.Controls 2.15
+=======
+import QtQuick
+import QtQuick.Controls
+import "Components/"
+>>>>>>> Stashed changes:QML/Devices_List.qml
 
 Item {
     id: root

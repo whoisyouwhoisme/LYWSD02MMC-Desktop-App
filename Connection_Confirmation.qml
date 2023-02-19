@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream:Connection_Confirmation.qml
 import QtQuick 2.0
 import QtQuick.Controls 2.15
+=======
+import QtQuick
+import QtQuick.Controls
+import "Components/"
+>>>>>>> Stashed changes:QML/Connection_Confirmation.qml
 
 Item {
     id: root

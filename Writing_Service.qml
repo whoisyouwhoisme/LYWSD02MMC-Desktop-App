@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.15
+import QtQuick
+import QtQuick.Controls
 
 Item {
     id: overlay
@@ -39,9 +39,7 @@ Item {
     Connections {
         target: BLE_BRIDGE
         function onWriting_Service() {
-            if (status_Text.color != "white") {
-                status_Text.color = "white";
-            }
+            status_Text.color = "white";
             status_Text.text = "Writing Service...";
             overlay.visible = true;
         }
