@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream:Time_Picker.qml
-import QtQuick 2.0
-import QtQuick.Controls 2.15
-=======
 import QtQuick
 import QtQuick.Controls
 import "Components/"
->>>>>>> Stashed changes:QML/Time_Picker.qml
 
 Item {
     id: root
@@ -17,13 +12,17 @@ Item {
 
     Dialogs_Background {
         id: dialog_Background
+
+        MouseArea {
+            anchors.fill: dialog_Background
+        }
     }
 
     Rectangle {
         id: dialog_Body
         width: 210
-        height: 205
-        color: "#f5f5f5"
+        height: 215
+        color: "white"
         radius: 5
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
@@ -33,13 +32,13 @@ Item {
             height: 15
             color: "#000000"
             text: "Set Custom Time"
+            font.pixelSize: 14
+            font.family: FontsManager.regular_Font.name
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
-            font.pixelSize: 14
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.family: "Bahnschrift"
             anchors.rightMargin: 15
             anchors.leftMargin: 15
             anchors.topMargin: 5
@@ -48,7 +47,7 @@ Item {
         Rectangle {
             id: tumblers_Background
             height: 150
-            color: "#ffffff"
+            color: "#ededed"
             radius: 5
             border.width: 0
             anchors.left: parent.left
@@ -64,12 +63,12 @@ Item {
                 height: 15
                 color: "#000000"
                 text: qsTr("Hours")
-                anchors.left: parent.left
-                anchors.top: parent.top
                 font.pixelSize: 14
+                font.family: FontsManager.regular_Font.name
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: "Bahnschrift"
+                anchors.left: parent.left
+                anchors.top: parent.top
                 anchors.leftMargin: 8
                 anchors.topMargin: 5
                 minimumPixelSize: 12
@@ -81,12 +80,12 @@ Item {
                 height: 15
                 color: "#000000"
                 text: qsTr("Minutes")
-                anchors.right: parent.right
-                anchors.top: parent.top
                 font.pixelSize: 14
+                font.family: FontsManager.regular_Font.name
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: "Bahnschrift"
+                anchors.right: parent.right
+                anchors.top: parent.top
                 anchors.rightMargin: 8
                 anchors.topMargin: 5
                 minimumPixelSize: 12
@@ -106,48 +105,48 @@ Item {
             Tumbler {
                 id: hours_Tumbler
                 width: 80
+                model: 24
+                delegate: tumblers_Delegate
+                font.pixelSize: 14
+                font.family: FontsManager.regular_Font.name
                 anchors.left: parent.left
                 anchors.top: hours_Label.bottom
                 anchors.bottom: parent.bottom
-                font.pointSize: 10
-                font.family: "Bahnschrift"
                 anchors.bottomMargin: 5
                 anchors.leftMargin: 8
                 anchors.topMargin: 5
-                model: 24
-                delegate: tumblers_Delegate
             }
 
             Tumbler {
                 id: minutes_Tumbler
                 width: 80
+                model: 60
+                delegate: tumblers_Delegate
+                font.pixelSize: 14
+                font.family: FontsManager.regular_Font.name
                 anchors.right: parent.right
                 anchors.top: minutes_Label.bottom
                 anchors.bottom: parent.bottom
                 anchors.rightMargin: 8
-                font.pointSize: 10
-                font.family: "Bahnschrift"
                 anchors.bottomMargin: 5
                 anchors.topMargin: 5
-                model: 60
-                delegate: tumblers_Delegate
             }
         }
 
-        Button {
+        Regular_Button {
             id: set_Time_Button
             width: 80
-            text: qsTr("Set Time")
+            button_Text: qsTr("Set Time")
+            font_Size: 14
+            font_Name: FontsManager.regular_Font.name
             anchors.right: parent.right
             anchors.top: tumblers_Background.bottom
             anchors.bottom: parent.bottom
-            font.pointSize: 10
-            font.family: "Bahnschrift"
-            anchors.bottomMargin: 5
-            anchors.topMargin: 5
+            anchors.bottomMargin: 10
+            anchors.topMargin: 10
             anchors.rightMargin: 15
 
-            onClicked: {
+            onButton_Pressed: {
                 let year_Timestamp = (new Date().getFullYear() - 1970) * 31536000;
                 let hours_Seconds = hours_Tumbler.currentIndex * 3600;
                 let minutes_Seconds = (minutes_Tumbler.currentIndex * 60) + 1;
@@ -158,20 +157,20 @@ Item {
             }
         }
 
-        Button {
+        Regular_Button {
             id: close_Button
             width: 80
-            text: qsTr("Cancel")
+            button_Text: qsTr("Cancel")
+            font_Size: 14
+            font_Name: FontsManager.regular_Font.name
             anchors.left: parent.left
             anchors.top: tumblers_Background.bottom
             anchors.bottom: parent.bottom
-            font.pointSize: 10
-            font.family: "Bahnschrift"
             anchors.leftMargin: 15
-            anchors.bottomMargin: 5
-            anchors.topMargin: 5
+            anchors.bottomMargin: 10
+            anchors.topMargin: 10
 
-            onClicked: {
+            onButton_Pressed: {
                 hide_Dialog();
             }
         }
@@ -213,6 +212,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:1.75;height:480;width:640}D{i:10}
+    D{i:0;autoSize:true;formeditorZoom:1.75;height:480;width:640}
 }
 ##^##*/

@@ -36,12 +36,12 @@ Item {
                 width: 400
                 color: "#ffffff"
                 text: qsTr("Connecting to device...")
-                elide: Text.ElideRight
-                anchors.top: busyIndicator.bottom
                 font.pixelSize: 20
+                font.family: FontsManager.regular_Font.name
+                elide: Text.ElideRight
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                font.family: "Bahnschrift"
+                anchors.top: busyIndicator.bottom
                 anchors.topMargin: 10
                 anchors.horizontalCenter: parent.horizontalCenter
             }

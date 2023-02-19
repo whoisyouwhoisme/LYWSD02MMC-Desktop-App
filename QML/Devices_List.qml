@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream:Devices_List.qml
-import QtQuick 2.12
-import QtQuick.Controls 2.15
-=======
 import QtQuick
 import QtQuick.Controls
 import "Components/"
->>>>>>> Stashed changes:QML/Devices_List.qml
 
 Item {
     id: root
@@ -79,23 +74,24 @@ Item {
                                 Image {
                                     id: device_Icon
                                     width: 30
+                                    source: deviceInfo_Icon
+                                    fillMode: Image.PreserveAspectFit
+                                    mipmap: true
                                     anchors.left: parent.left
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
-                                    source: deviceInfo_Icon
                                     anchors.leftMargin: 10
                                     anchors.bottomMargin: 10
                                     anchors.topMargin: 10
-                                    fillMode: Image.PreserveAspectFit
                                 }
 
                                 Text {
                                     id: name_Label
                                     text: qsTr("Name:")
+                                    font.pixelSize: 14
+                                    font.family: FontsManager.regular_Font.name
                                     anchors.left: device_Icon.right
                                     anchors.top: parent.top
-                                    font.pixelSize: 14
-                                    font.family: "Bahnschrift"
                                     anchors.leftMargin: 10
                                     anchors.topMargin: 8
                                 }
@@ -103,10 +99,10 @@ Item {
                                 Text {
                                     id: mac_Label
                                     text: qsTr("MAC:")
+                                    font.pixelSize: 14
+                                    font.family: FontsManager.regular_Font.name
                                     anchors.left: device_Icon.right
                                     anchors.bottom: parent.bottom
-                                    font.pixelSize: 14
-                                    font.family: "Bahnschrift"
                                     anchors.leftMargin: 10
                                     anchors.bottomMargin: 8
                                 }
@@ -114,13 +110,14 @@ Item {
                                 Text {
                                     id: device_Name
                                     text: deviceInfo_Name
+                                    font.pixelSize: 14
+                                    font.family: FontsManager.regular_Font.name
                                     elide: Text.ElideRight
+                                    color: "gray"
                                     anchors.left: name_Label.right
                                     anchors.right: parent.right
                                     anchors.top: parent.top
-                                    font.pixelSize: 14
                                     anchors.rightMargin: 10
-                                    font.family: "Bahnschrift"
                                     anchors.leftMargin: 3
                                     anchors.topMargin: 8
                                 }
@@ -128,11 +125,13 @@ Item {
                                 Text {
                                     id: device_Mac
                                     text: deviceInfo_Mac
+                                    font.pixelSize: 14
+                                    font.family: FontsManager.regular_Font.name
                                     elide: Text.ElideRight
+                                    color: "gray"
                                     anchors.left: mac_Label.right
                                     anchors.right: parent.right
                                     anchors.bottom: parent.bottom
-                                    font.pixelSize: 12
                                     anchors.rightMargin: 10
                                     anchors.leftMargin: 3
                                     anchors.bottomMargin: 8
@@ -149,19 +148,19 @@ Item {
             }
         }
 
-        Button {
+        Regular_Button {
             id: search_Button
             width: 100
             height: 20
-            text: qsTr("Stop Search")
+            button_Text: qsTr("Stop Search")
+            font_Size: 14
+            font_Name: FontsManager.regular_Font.name
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             anchors.rightMargin: 8
-            font.pointSize: 10
             anchors.bottomMargin: 8
-            font.family: "Bahnschrift"
 
-            onClicked: {
+            onButton_Pressed: {
                 if (search_Completed) {
                     BLE_BRIDGE.scan_Devices();
                 }
@@ -171,19 +170,19 @@ Item {
             }
         }
 
-        Button {
+        Regular_Button {
             id: close_Button
             width: 100
             height: 20
-            text: qsTr("Exit")
+            button_Text: qsTr("Exit")
+            font_Size: 14
+            font_Name: FontsManager.regular_Font.name
             anchors.left: parent.left
             anchors.bottom: parent.bottom
-            font.pointSize: 10
-            font.family: "Bahnschrift"
             anchors.leftMargin: 8
             anchors.bottomMargin: 8
 
-            onClicked: {
+            onButton_Pressed: {
                 BLE_BRIDGE.stop_Scan();
                 hide_Dialog();
             }
@@ -192,17 +191,17 @@ Item {
         Text {
             id: discovering_Status
             text: qsTr("Device List")
+            font.pixelSize: 14
+            font.family: FontsManager.regular_Font.name
             elide: Text.ElideRight
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
-            font.pixelSize: 14
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             anchors.leftMargin: 8
             anchors.rightMargin: 8
             anchors.topMargin: 8
-            font.family: "Bahnschrift"
         }
     }
 
@@ -213,13 +212,13 @@ Item {
         }
 
         function onNew_Device_Found(device_Name, device_Mac) {
-            var icon_Path = "/icons/bluetooth.svg";
+            var icon_Path = "qrc:/icons/bluetooth.svg";
 
             if (device_Name === "LYWSD02") {
-                icon_Path = "/icons/clock.svg";
+                icon_Path = "qrc:/icons/clock.svg";
             }
             else {
-                icon_Path = "/icons/bluetooth.svg";
+                icon_Path = "qrc:/icons/bluetooth.svg";
             }
 
             devices_List_Model.append({"deviceInfo_Name":device_Name, "deviceInfo_Mac":device_Mac, "deviceInfo_Icon":icon_Path});
@@ -231,12 +230,12 @@ Item {
 
         function onSearch_Completed() {
             search_Completed = true;
-            search_Button.text = "Scan Again";
+            search_Button.button_Text = "Scan Again";
         }
 
         function onSearch_Started() {
             search_Completed = false;
-            search_Button.text = "Stop Search";
+            search_Button.button_Text = "Stop Search";
         }
     }
 

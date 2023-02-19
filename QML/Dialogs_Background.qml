@@ -30,13 +30,13 @@ Rectangle {
 
     transitions: [
         Transition {
-                from: "hideBack"
-                to: "showBack"
+            from: "hideBack"
+            to: "showBack"
 
-                NumberAnimation {
-                    properties: "opacity";
-                    duration: 250;
-                }
+            NumberAnimation {
+                properties: "opacity";
+                duration: 250;
+            }
         }
     ]
 

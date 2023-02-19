@@ -1,24 +1,17 @@
-<<<<<<< Updated upstream:LYWSD02MMC.qml
-import QtQuick 2.12
-=======
 import QtQuick 2.15
 import Qt5Compat.GraphicalEffects
->>>>>>> Stashed changes:QML/LYWSD02MMC.qml
 
 Item {
-    FontLoader {
-        id: digital7
-        source: "fonts/Digital-7.ttf"
-    }
-
     width: 360
     height: 200
+
     Rectangle {
         id: clock_Case
         width: 360
         height: 200
         color: "#ffffff"
         radius: 25
+        visible: false
 
         Rectangle {
             id: display_Border
@@ -39,19 +32,16 @@ Item {
 
                 Text {
                     id: time_View
-                    width: 280
-                    height: 83
+                    height: 85
                     text: qsTr("--:--")
-                    anchors.top: parent.top
                     font.pixelSize: 100
+                    font.family: FontsManager.clock_Font.name
+                    renderType: Text.NativeRendering
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    anchors.top: parent.top
                     anchors.topMargin: 0
                     anchors.horizontalCenter: parent.horizontalCenter
-                    fontSizeMode: Text.FixedSize
-                    font.weight: Font.Normal
-                    font.family: digital7.name
-                    renderType: Text.NativeRendering
                 }
 
                 Item {
@@ -62,10 +52,10 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottomMargin: 5
 
-                    Item {
-                        id: battery_Info
-                        width: 63
-                        height: 24
+                    Row {
+                        id: battery_Info_Row
+                        spacing: 3
+                        anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                         anchors.leftMargin: 10
 
@@ -73,87 +63,76 @@ Item {
                             id: battery_Icon
                             width: 18
                             height: 18
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.left
-                            source: "icons/battery.svg"
-                            anchors.leftMargin: 0
+                            source: "qrc:/icons/battery.svg"
                             fillMode: Image.PreserveAspectFit
+                            mipmap: true
+                            anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             id: battery_Level
-                            height: 24
-                            text: qsTr("--")
-                            anchors.left: battery_Icon.right
+                            text: "--"
                             font.pixelSize: 22
+                            font.family: FontsManager.clock_Font.name
+                            renderType: Text.NativeRendering
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
-                            anchors.leftMargin: 2
-                            font.family: digital7.name
+                            anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             id: battery_Sign
-                            height: 24
-                            text: qsTr("%")
-                            anchors.left: battery_Level.right
-                            font.pixelSize: 12
+                            text: "%"
+                            font.pixelSize: 18
+                            font.family: FontsManager.regular_Font.name
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
-                            anchors.leftMargin: 2
-                            font.strikeout: false
-                            font.family: "Arial"
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
 
-                    Item {
-                        id: humidity_Info
-                        width: 53
-                        height: 24
+                    Row {
+                        id: humidity_Info_Row
+                        spacing: 3
+                        anchors.verticalCenter: parent.verticalCenter
                         anchors.horizontalCenter: parent.horizontalCenter
 
                         Image {
                             id: humidity_Icon
                             width: 18
                             height: 18
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.left
-                            source: "icons/humidity.svg"
-                            anchors.leftMargin: 0
+                            source: "qrc:/icons/humidity.svg"
                             fillMode: Image.PreserveAspectFit
+                            mipmap: true
+                            anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             id: humidity_Level
-                            height: 24
                             text: "--"
-                            anchors.left: humidity_Icon.right
                             font.pixelSize: 22
+                            font.family: FontsManager.clock_Font.name
+                            renderType: Text.NativeRendering
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignBottom
-                            anchors.leftMargin: 2
-                            font.family: digital7.name
-                            font.strikeout: false
+                            anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             id: humidity_Sign
-                            height: 24
-                            text: qsTr("%")
-                            anchors.left: humidity_Level.right
-                            font.pixelSize: 12
+                            text: "%"
+                            font.pixelSize: 18
+                            font.family: FontsManager.regular_Font.name
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
-                            anchors.leftMargin: 2
-                            font.family: "Arial"
-                            font.strikeout: false
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
 
-                    Item {
-                        id: temperature_Info
-                        width: 75
-                        height: 24
+                    Row {
+                        id: temperature_Info_Row
+                        spacing: 3
+                        anchors.verticalCenter: parent.verticalCenter
                         anchors.right: parent.right
                         anchors.rightMargin: 10
 
@@ -161,42 +140,46 @@ Item {
                             id: temp_Icon
                             width: 18
                             height: 18
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.left
-                            source: "icons/thermometer.svg"
-                            anchors.leftMargin: 0
+                            source: "qrc:/icons/thermometer.svg"
                             fillMode: Image.PreserveAspectFit
+                            mipmap: true
+                            anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             id: temp_Level
-                            height: 22
                             text: "--.-"
-                            anchors.left: temp_Icon.right
                             font.pixelSize: 22
+                            font.family: FontsManager.clock_Font.name
+                            renderType: Text.NativeRendering
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignBottom
-                            anchors.leftMargin: 2
-                            font.strikeout: false
-                            font.family: digital7.name
+                            anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             id: temp_Sign
-                            height: 22
-                            text: qsTr("°C")
-                            anchors.left: temp_Level.right
-                            font.pixelSize: 12
+                            text: "°C"
+                            font.pixelSize: 18
+                            font.family: FontsManager.regular_Font.name
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
-                            anchors.leftMargin: 2
-                            font.family: "Arial"
-                            font.strikeout: false
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
                 }
             }
         }
+    }
+
+    DropShadow {
+        anchors.fill: clock_Case
+        horizontalOffset: 0
+        verticalOffset: 0
+        radius: 12.0
+        samples: 14
+        color: "#60000000"
+        source: clock_Case
     }
 
     Connections {

@@ -9,10 +9,10 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        bluetooth_bridge.cpp \
-        clock_info.cpp \
-        device_info.cpp \
-        main.cpp
+        main.cpp \
+        src/bluetooth_bridge.cpp \
+        src/clock_info.cpp \
+        src/device_info.cpp
 
 RESOURCES += qml.qrc
 
@@ -28,6 +28,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    bluetooth_bridge.h \
-    clock_info.h \
-    device_info.h
+    src/bluetooth_bridge.h \
+    src/clock_info.h \
+    src/device_info.h

@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream:Connection_Info.qml
-import QtQuick 2.0
-import QtQuick.Controls 2.15
-=======
 import QtQuick
 import QtQuick.Controls
 import "Components/"
->>>>>>> Stashed changes:QML/Connection_Info.qml
 
 Item {
     id: item1
@@ -17,43 +12,32 @@ Item {
     Text {
         id: connection_Status
         height: 18
-<<<<<<< Updated upstream:Connection_Info.qml
-        text: qsTr("Not Connected")
-=======
         text: "Not Connected"
         font.pixelSize: 18
         font.family: FontsManager.regular_Font.name
->>>>>>> Stashed changes:QML/Connection_Info.qml
         elide: Text.ElideRight
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        font.pixelSize: 18
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
         anchors.leftMargin: 10
         anchors.rightMargin: 10
-        font.family: "Bahnschrift"
         anchors.topMargin: 0
     }
 
-    Button {
+    Regular_Button {
         id: connection_Button
+        width: 80
         height: 25
-<<<<<<< Updated upstream:Connection_Info.qml
-        text: qsTr("Connect")
-=======
         button_Text: "Connect"
         font_Size: 14
         font_Name: FontsManager.regular_Font.name
->>>>>>> Stashed changes:QML/Connection_Info.qml
         anchors.top: connection_Status.bottom
-        font.pointSize: 10
-        font.family: "Bahnschrift"
-        anchors.topMargin: 16
+        anchors.topMargin: 15
         anchors.horizontalCenter: parent.horizontalCenter
 
-        onClicked: {
+        onButton_Pressed: {
             if (device_Connected) {
                 BLE_BRIDGE.disconnect_Device();
             }

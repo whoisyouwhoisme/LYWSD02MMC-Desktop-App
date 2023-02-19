@@ -20,11 +20,11 @@ Item {
             width: 400
             color: "#ffffff"
             text: qsTr("Writing Service...")
-            elide: Text.ElideRight
             font.pixelSize: 20
+            font.family: FontsManager.regular_Font.name
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.family: "Bahnschrift"
+            elide: Text.ElideRight
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
         }

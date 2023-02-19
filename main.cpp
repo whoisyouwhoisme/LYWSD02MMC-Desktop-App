@@ -3,8 +3,8 @@
 #include <QQmlContext>
 #include <QQuickStyle>
 
-#include "bluetooth_bridge.h"
-#include "clock_info.h"
+#include "src/bluetooth_bridge.h"
+#include "src/clock_info.h"
 
 int main(int argc, char *argv[]) {
     QQuickStyle::setStyle("Basic");

@@ -1,21 +1,24 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>LYWSD02MMC.qml</file>
         <file>icons/battery.svg</file>
         <file>icons/bluetooth.svg</file>
         <file>icons/clock.svg</file>
         <file>icons/humidity.svg</file>
         <file>icons/thermometer.svg</file>
-        <file>Clock_Control.qml</file>
-        <file>fonts/Bahnschrift.ttf</file>
-        <file>Connection_Info.qml</file>
-        <file>Devices_List.qml</file>
-        <file>Connection_Confirmation.qml</file>
-        <file>Dialogs_Background.qml</file>
-        <file>Connecting_To_Device.qml</file>
-        <file>Time_Picker.qml</file>
-        <file>Writing_Service.qml</file>
         <file>fonts/Digital-7.ttf</file>
+        <file>QML/Clock_Control.qml</file>
+        <file>QML/Connecting_To_Device.qml</file>
+        <file>QML/Connection_Confirmation.qml</file>
+        <file>QML/Connection_Info.qml</file>
+        <file>QML/Devices_List.qml</file>
+        <file>QML/Dialogs_Background.qml</file>
+        <file>QML/LYWSD02MMC.qml</file>
+        <file>QML/Time_Picker.qml</file>
+        <file>QML/Writing_Service.qml</file>
+        <file>QML/FontsManager.qml</file>
+        <file>QML/qmldir</file>
+        <file>fonts/Roboto-Regular.ttf</file>
+        <file>QML/Components/Regular_Button.qml</file>
     </qresource>
 </RCC>
