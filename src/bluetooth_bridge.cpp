@@ -49,7 +49,7 @@ void bluetooth_Bridge::scan_Devices() {
     _device_Discovery_Agent->setLowEnergyDiscoveryTimeout(30000);
 
     connect(_device_Discovery_Agent, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered, this, &bluetooth_Bridge::S_add_Device);
-    //connect(_device_Discovery_Agent, QOverload<QBluetoothDeviceDiscoveryAgent::Error>::of(&QBluetoothDeviceDiscoveryAgent::error), this, &bluetooth_Bridge::S_device_Scan_Error);
+    connect(_device_Discovery_Agent, &QBluetoothDeviceDiscoveryAgent::errorOccurred, this, &bluetooth_Bridge::S_device_Scan_Error);
     connect(_device_Discovery_Agent, &QBluetoothDeviceDiscoveryAgent::finished, this, &bluetooth_Bridge::S_device_Scan_Finished);
     connect(_device_Discovery_Agent, &QBluetoothDeviceDiscoveryAgent::canceled, this, &bluetooth_Bridge::S_device_Scan_Finished);
 
@@ -153,7 +153,7 @@ void bluetooth_Bridge::connect_Device(device_Info *device) {
         connect(_BLE_Controller, SIGNAL(serviceDiscovered(QBluetoothUuid)), this, SLOT(S_service_Discovered(QBluetoothUuid)));
         connect(_BLE_Controller, SIGNAL(discoveryFinished()), this, SLOT(S_service_Scan_Done()), Qt::QueuedConnection);
         connect(_BLE_Controller, SIGNAL(disconnected()), this, SLOT(S_device_Disconnected()));
-        //connect(_BLE_Controller, SIGNAL(error(QLowEnergyController::Error)), this, SLOT(S_BLE_Controller_Error(QLowEnergyController::Error)));
+        connect(_BLE_Controller, SIGNAL(errorOccurred(QLowEnergyController::Error)), this, SLOT(S_BLE_Controller_Error(QLowEnergyController::Error)));
 
         _BLE_Controller->connectToDevice();
     }
@@ -220,7 +220,7 @@ void bluetooth_Bridge::S_service_Scan_Done() {
         connect(_BLE_Service, SIGNAL(characteristicChanged(QLowEnergyCharacteristic,QByteArray)), this, SLOT(S_service_Characteristic_Changed(QLowEnergyCharacteristic,QByteArray)));
         connect(_BLE_Service, SIGNAL(characteristicRead(QLowEnergyCharacteristic,QByteArray)), this, SLOT(S_service_Characteristic_Read(QLowEnergyCharacteristic,QByteArray)));
         connect(_BLE_Service, SIGNAL(characteristicWritten(QLowEnergyCharacteristic,QByteArray)), this, SLOT(S_service_Characteristic_Written(QLowEnergyCharacteristic,QByteArray)));
-        //connect(_BLE_Service, SIGNAL(error(QLowEnergyService::ServiceError)), this, SLOT(S_service_Error(QLowEnergyService::ServiceError)));
+        connect(_BLE_Service, SIGNAL(errorOccurred(QLowEnergyService::ServiceError)), this, SLOT(S_service_Error(QLowEnergyService::ServiceError)));
 
         if (_BLE_Service->state() == QLowEnergyService::RemoteService) {
             emit connecting_Status_Changed("Discovering Service Details...");
@@ -363,8 +363,13 @@ void bluetooth_Bridge::S_service_Characteristic_Written(const QLowEnergyCharacte
 
 
 void bluetooth_Bridge::S_BLE_Controller_Error(QLowEnergyController::Error error) {
-    Q_UNUSED(error);
-    ble_Critical_Error("BLE Controller Error.");
+    if (error == QLowEnergyController::RemoteHostClosedError) {
+        ble_Critical_Error("LYWSD02 closed the connection.");
+    }
+    else {
+        ble_Critical_Error("Unexpected BLE Controller Error.");
+    }
+
     _update_Timer->stop();
 }
 

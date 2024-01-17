@@ -10,13 +10,13 @@ Item {
         width: 360
         height: 200
         color: "#ffffff"
-        radius: 25
+        radius: 29
         visible: false
 
         Rectangle {
             id: display_Border
-            width: 340
-            height: 180
+            width: 350
+            height: 190
             color: "#f0f0f0"
             radius: 25
             anchors.verticalCenter: parent.verticalCenter
@@ -24,8 +24,8 @@ Item {
 
             Rectangle {
                 id: display
-                width: 280
-                height: 120
+                width: 290
+                height: 130
                 color: "#dfdfdf"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -174,11 +174,11 @@ Item {
 
     DropShadow {
         anchors.fill: clock_Case
-        horizontalOffset: 0
-        verticalOffset: 0
-        radius: 12.0
+        horizontalOffset: 3
+        verticalOffset: 3
+        radius: 6.0
         samples: 14
-        color: "#60000000"
+        color: "#20000000"
         source: clock_Case
     }
 

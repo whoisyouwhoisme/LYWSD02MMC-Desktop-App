@@ -20,11 +20,11 @@ Item {
 
     DropShadow {
         anchors.fill: control_Background
-        horizontalOffset: 0
-        verticalOffset: 0
-        radius: 8.0
+        horizontalOffset: 3
+        verticalOffset: 3
+        radius: 6.0
         samples: 14
-        color: "#40000000"
+        color: "#20000000"
         source: control_Background
     }
 

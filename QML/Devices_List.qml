@@ -112,7 +112,7 @@ Item {
                                     text: deviceInfo_Name
                                     font.pixelSize: 14
                                     font.family: FontsManager.regular_Font.name
-                                    elide: Text.ElideRight
+                                    elide: Text.ElideMiddle
                                     color: "gray"
                                     anchors.left: name_Label.right
                                     anchors.right: parent.right
@@ -127,7 +127,7 @@ Item {
                                     text: deviceInfo_Mac
                                     font.pixelSize: 14
                                     font.family: FontsManager.regular_Font.name
-                                    elide: Text.ElideRight
+                                    elide: Text.ElideMiddle
                                     color: "gray"
                                     anchors.left: mac_Label.right
                                     anchors.right: parent.right

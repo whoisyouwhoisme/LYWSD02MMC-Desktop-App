@@ -14,7 +14,7 @@ ApplicationWindow {
 
     Rectangle {
         id: background
-        color: "#ffffff"
+        color: "#f8f8f8"
         anchors.fill: parent
         focus: true
         anchors.rightMargin: 0
