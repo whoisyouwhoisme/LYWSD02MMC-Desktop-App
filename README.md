@@ -4,7 +4,7 @@ This program will allow you to manage your **LYWSD02MMC**, view time, temperatur
 
 _Due to copyright reasons, some items may be missing in the repository. For example: fonts, icons, sounds, etc.<br/>This may affect the build/use of the project. Replace these items if necessary._
 
-**[DOWNLOAD!](https://github.com/Koteyk0o/LYWSD02MMC-Desktop-App/releases "DOWNLOAD!")**
+**[DOWNLOAD APP!](https://github.com/Koteyk0o/LYWSD02MMC-Desktop-App/releases "DOWNLOAD APP!")**
 
 ## Its features:
 - Viewing and changing the time.
